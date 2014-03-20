@@ -1,0 +1,31 @@
+public class MyLinkedList{
+    private Node head;
+    
+    public MyLinkedList(){
+	head = null;
+    }
+    public void add(String d){
+	Node tmp = new Node(d);
+	//	head = tmp;
+	//sets new node as head, rather than adding to the back of the list
+	tmp.setNext(head);//means what was head is now 2nd
+	head = tmp;//tmp is now the new head
+    }
+
+
+    public String toString(){
+	String s = "";
+	s = "" + head;
+	return s;
+    }
+    public static void main(String[] args){
+	MyLinkedList L = new MyLinkedList();
+
+	L.add("Sully");
+	System.out.println(L);
+	L.add("mike");
+	System.out.println(L);
+	L.add("randall");
+	System.out.println(L);
+    }
+}
