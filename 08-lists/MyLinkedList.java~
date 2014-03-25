@@ -1,3 +1,7 @@
+import java.io.*;
+import java.util.*;
+
+
 public class MyLinkedList{
     private Node head;
     
@@ -6,16 +10,17 @@ public class MyLinkedList{
     }
      public void add1(String s){
 	Node tmp = new Node(s);
+	tmp.setNext(head);
 	head = tmp;
      }
     public void add2(int i,String s){
-	Node tmp = new Node(s);
-	head = tmp;
-        for (int j=0; j<i;j++){
-	    //  tmp.setNext(tmp.getNext().getNext());
+	Node tmp = head;
+        for (int j=0; j<i-1;j++){
 	    tmp = tmp.getNext();
 	    }
-
+	Node n = new Node(s);
+	n.setNext(tmp.getNext());
+	tmp.setNext(n);
     
     }
     public String get(int i){
@@ -45,29 +50,53 @@ public class MyLinkedList{
     }
     public int find(String s){
 	Node tmp = head;
-	for (int j=0;//I know it has to be the length of the list, which i cant figure out
-    }
-    public int length(){
-
+	int index = 0;
+	while (tmp != null){
+	    if (tmp.getData().equals(s)){
+		return index;
+	    }
+	    tmp = tmp.getNext();
+	    index++;
+	}
+	return -1;
+    
+      }
+    public int size(){
+	int l = 0;
+	Node tmp = head;
+	while (tmp != null){
+	    tmp = tmp.getNext();
+	    l++;
+	}
+	return l;
     }
 
 
     public String toString(){
 	String s = "";
-	s = "" + head;
+        Node tmp = head;
+	while (tmp!=null){
+	    s += tmp + " ";
+	    tmp = tmp.getNext();
+	}
 	return s;
     }
     public static void main(String[] args){
 	MyLinkedList L = new MyLinkedList();
 
        	L.add1("Sara");
-       	System.out.println(L);
+	//	System.out.println(L);
        	L.add1("mike");
-       	System.out.println(L);
+	//	System.out.println(L);
 	L.add1("randall");
+      	System.out.println(L);
+      	L.add2(1,"Sully");
        	System.out.println(L);
-       	L.add2(0,"Sully");
-       	System.out.println(L);
+	System.out.println(L.get(2));
+	L.set(2, "EMILY");
+	L.remove(1);
+	System.out.println(L);
+        System.out.println(L.size());
 
     }
 }
