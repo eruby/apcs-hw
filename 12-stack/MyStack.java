@@ -1,93 +1,62 @@
-public class MyStack {
-    private int[] a;
-    private int top;
-    private int numElts;
+public class MyStack{
+    private String[] a;
+    private int top, numElts;
+    
 
+    //consider adding size();
+
+    //constructor
     public MyStack(){
-	a = new int[10];
-	top = null;
-	numElts = 0;
+	a = new String[10];
+	top = -1;
     }
-
-    public void grow() {
-	String[] newStack = new String[stack.length + 10];
-	System.arraycopy(stack, 0, newStack, 0, 10);
-	stack = newStack;
-    }
-
-    public void push(int s){
-        if (a[0] == null){
-	    a[0] = s;
-	    top = s;
+    // push 2
+    public void push(String s){
+	if (top >= a.length){
+	    String[] x = new String[a.length*2];
+	    for (int i=0; i<a.length; i++){
+		x[i] = a[i];
+	    }
+	    a = x;
 	}
-	if (a[length - 1] != 0){
-	    grow();
+
+	top++;
+	a[top] = s;
+	numElts++;
+    }
+    // pop
+    public String pop(){
+	String s = a[top];
+	top--;
+	numElts--;
+	return s;
+    }
+    //peek
+    public String peek(){
+	return a[top];
+    }
+    //isEMpty
+    public boolean isEmpty(){
+	return top < 0;
+    }
+    //toString
+    public String toString(){
+	String s = "";
+
+	for (int i=0; i<=top;i++){
+	    s = a[i]+" "+ s;
 	} 
-	for (int i = 1; i<a.length; i++){
-	    a[i] = a[i-1];
-	}
-	a[0] = s;
-	top = s;
-	
-	numElts = numElts+1;
-    }
-
-    public String pop() {
-	int s = top;
-	for (int i=0;i<a.length-1;i++){
-	    a[i] = a[i+1];
-	}
-	a[a.length-1] = 0;
-	numElts = numElts-1;
-	top = a[0];
 	return s;
     }
 
-    public String peek() {
-	return top
-
-    }
-    
-    public int size() {
-	return numElts;
-    }
-
-    public boolean isEmpty() {
-	return top==null;
-    }
-
-    public String toString() {
-	String s="";
-
-	for (Node tmp = top; tmp != null; tmp = tmp.getNext()){
-	    s = s + tmp.getData()+", ";
-	}
-	/*
-	Node tmp = top;
-	while(tmp!=null) {
-	    s = s + tmp.getData()+", ";
-	    tmp = tmp.getNext();
-	}
-	*/
-	return s.substring(0,s.length()-2);
-    }
-
-    
-    
- public static void main(String[] args){
+    public static void main(String[] args){
 	MyStack a = new MyStack();
-	a.push(1);
-	a.push(2);
-	a.push(3);
+	a.push("one");
+	a.push("two");
+	a.push("three");
 	System.out.println(a);
-	while (!a.isEmpty()){
-	    System.out.println(a.pop());
-	}
-	a.push(4);
-	System.out.println(a.peek());
-	a.push(5);
-	System.out.println(a.peek());
-
-
+	a.pop();
+	a.pop();
+	System.out.println(a);
     }
 }
