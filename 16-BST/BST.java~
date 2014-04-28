@@ -1,0 +1,48 @@
+import java.util.*;
+import java.io.*;
+
+public class BST{
+    private Node root;
+
+    public BST(){
+	root = null;
+    }
+
+    public Node search(int x){
+	Node tmp = root;
+	while (tmp != null && tmp.getData != x){
+	    if (tmp.getData() < x)
+		tmp = tmp.getLeft();
+	    else
+		tmp = tmp.getRight();
+	
+	}
+	return tmp;
+    }
+
+    public void insert(Node n){
+	Node tmp = root;
+	Node pg = tmp;
+	while (tmp != null && tmp.getData() != n.getData()){
+	    if (tmp.getData() < n.getData()){
+		pg = tmp;
+		tmp = tmp.getLeft();
+	    }
+	    else{
+		pg = tmp;
+		tmp = tmp.getRight();
+	    }
+	}
+	if (tmp == null){
+	    if (tmp.getData() < n.getData())
+		pg.setLeft(n);
+	    else
+		pg.setRight(n);
+	}
+    }
+
+    public static void main(String[] args){
+	BST b = new BST();
+	
+    }
+}
