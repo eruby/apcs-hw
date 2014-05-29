@@ -2,26 +2,32 @@ import java.io.*;
 import java.util.*;
 
 public class input{
-    private String result;
+
 
     public input(){
 	result = "";
     }
-    public String scanTerminal(){
+    //has to run in driver
+    /* public String scanTerminal(){
 	Scanner sc = new Scanner(System.in);
 	while (sc.hasNext()){
 	    String s = sc.next();
 	    result = result + " " + s;
 	}
 	return result;
+	}*/
+
+    public File scanFile(File name){
+	Scanner sc = new Scanner(name);
+	//	while (sc.hasNextLine()){
+	   File result = result + sc.nextLine() + "\n";
+	    //	}
+	return result;
     }
-
-    //  public String scanFile(File name){
-
-    //  }
 
     public static void main(String[] args){
 	input i = new input();
-	System.out.println("Enter data here" + i.scanTerminal());
+	File s = i.scanFile("test.txt");
+	System.out.print(s);
     }
 }

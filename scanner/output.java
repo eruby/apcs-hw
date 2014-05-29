@@ -1,12 +1,12 @@
 import java.io.*;
 
-public class output {
+public class output{
 
     public static void main(String[] args){
 	PrintWriter out=null;
 	try {
 
-	    out = new PrintWriter(new BufferedWriter(new FileWriter("test.out")));
+	    out = new PrintWriter(new BufferedWriter(new FileWriter("test2.txt")));
 	} catch (Exception e){};
 
 	    out.print ("HELLO");

@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class io {
+public class output {
 
     public static void main(String[] args){
 	PrintWriter out=null;
